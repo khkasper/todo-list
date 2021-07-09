@@ -29,10 +29,20 @@ function changeBg() {
 changeBg();
 
 // https://stackoverflow.com/questions/37765638/toggle-event-listeners
+// Função para riscar e remover risco do elemento selecionado com doubleclick. Criei uma classe no style para receber o parâmetro.
 
 function riskTask() {
   taskList.addEventListener('dblclick', (event) => {
-    event.target.classList.toggle('check');
+    event.target.classList.toggle('completed');
   });
 }
 riskTask();
+
+const clearAllButton = document.querySelector('#apaga-tudo');
+
+function clearAll() {
+  clearAllButton.addEventListener('click', () => {
+    taskList.innerHTML = '';
+  });
+}
+clearAll();
