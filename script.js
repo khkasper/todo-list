@@ -38,6 +38,8 @@ function riskTask() {
 }
 riskTask();
 
+// Função ao clicar no botão Apaga tudo, limpa todo o conteúdo da lista
+
 const clearAllButton = document.querySelector('#apaga-tudo');
 
 function clearAll() {
@@ -46,3 +48,18 @@ function clearAll() {
   });
 }
 clearAll();
+
+// Função ao clicar no botão Remover finalizados, percorre todos os itens com a classe .complete e remove estes itens da lista
+
+const rmvDoneButton = document.querySelector('#remover-finalizados');
+
+function rmvDone () {
+  rmvDoneButton.addEventListener('click', () => {
+    const doneList = document.querySelectorAll('.completed');
+    for (let i = 0; i < doneList.length; i += 1) {
+      doneList[i].remove();
+    }
+  });
+}
+rmvDone();
+
