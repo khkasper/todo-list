@@ -7,6 +7,7 @@ const liItem = document.getElementsByTagName('li');
 const clearAllButton = document.querySelector('#apaga-tudo');
 const rmvDoneButton = document.querySelector('#remover-finalizados');
 const saveTasks = document.querySelector('#salvar-tarefas');
+const moveUpButton = document.querySelector('#mover-cima');
 
 // Criar botão que ao ser clicado, cria um item de lista para receber o texto do "input" e adiciona esta "li" na "lista ordenada", limpando o conteúdo do "input" após a execução.
 
@@ -20,14 +21,14 @@ function addTaskItem() {
 }
 addTaskItem();
 
-// Criar função para ao clicar, percorrer por todos os itens da lista, resetando para a cor de fundo padrão (branca) e alterando a selecionada para cinza.
+// Criar função para ao clicar, percorrer por todos os itens da lista, resetando para a cor de fundo padrão (branca) e altera a selecionada para cinza.
 
 function changeBg() {
   taskList.addEventListener('click', (event) => {
     for (let i = 0; i < liItem.length; i += 1) {
-      liItem[i].style.backgroundColor = 'white';
+      liItem[i].classList.remove('selecionado');
     }
-    event.target.style.backgroundColor = 'rgb(128, 128, 128)';
+    event.target.classList.add('selecionado');
   });
 }
 changeBg();
@@ -64,6 +65,8 @@ function rmvDone () {
 rmvDone();
 
 // Função ao clicar no botão Salvar tarefas, salva os itens no localStorage, pois devem permanecer na lista ao recarregar a página.
+// Define os itens da lista (li) como parâmetros a serem salvos e os retorna quando a página é atualizada.
+// https://stackoverflow.com/questions/44564795/how-to-keep-localstorage-values-after-refresh
 
 function saveTaskButton () {
   saveTasks.addEventListener('click', () => {
@@ -72,3 +75,4 @@ function saveTaskButton () {
   taskList.innerHTML = localStorage.getItem('item');
 }
 saveTaskButton();
+
