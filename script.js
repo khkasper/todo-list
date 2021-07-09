@@ -1,8 +1,12 @@
-// Criar botão que ao ser clicado, cria um item de lista para receber o texto do "input" e adiciona esta "li" na "lista ordenada", limpando o conteúdo do "input" após a execução.
-
+// Facilitando encontrar as minhas const declaradas.
 const taskText = document.querySelector('#texto-tarefa');
 const createTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
+const liItem = document.getElementsByTagName('li');
+const clearAllButton = document.querySelector('#apaga-tudo');
+const rmvDoneButton = document.querySelector('#remover-finalizados');
+
+// Criar botão que ao ser clicado, cria um item de lista para receber o texto do "input" e adiciona esta "li" na "lista ordenada", limpando o conteúdo do "input" após a execução.
 
 function addTaskItem() {
   createTask.addEventListener('click', () => {
@@ -14,9 +18,7 @@ function addTaskItem() {
 }
 addTaskItem();
 
-// Criar função para ao clicar, percorrer por todos os itens da lista, resetando para a cor de fundo padrão (branca) e alterando a selecionada para cinza
-
-const liItem = document.getElementsByTagName('li');
+// Criar função para ao clicar, percorrer por todos os itens da lista, resetando para a cor de fundo padrão (branca) e alterando a selecionada para cinza.
 
 function changeBg() {
   taskList.addEventListener('click', (event) => {
@@ -29,7 +31,7 @@ function changeBg() {
 changeBg();
 
 // https://stackoverflow.com/questions/37765638/toggle-event-listeners
-// Função para riscar e remover risco do elemento selecionado com doubleclick. Criei uma classe no style para receber o parâmetro.
+// Função para riscar e remover o "risco" do elemento selecionado por um doubleclick.
 
 function riskTask() {
   taskList.addEventListener('dblclick', (event) => {
@@ -38,9 +40,7 @@ function riskTask() {
 }
 riskTask();
 
-// Função ao clicar no botão Apaga tudo, limpa todo o conteúdo da lista
-
-const clearAllButton = document.querySelector('#apaga-tudo');
+// Função ao clicar no botão Apaga tudo, limpa todo o conteúdo da lista.
 
 function clearAll() {
   clearAllButton.addEventListener('click', () => {
@@ -49,9 +49,7 @@ function clearAll() {
 }
 clearAll();
 
-// Função ao clicar no botão Remover finalizados, percorre todos os itens com a classe .complete e remove estes itens da lista
-
-const rmvDoneButton = document.querySelector('#remover-finalizados');
+// Função ao clicar no botão Remover finalizados, percorre todos os itens com a classe .complete e remove estes itens da lista.
 
 function rmvDone () {
   rmvDoneButton.addEventListener('click', () => {
