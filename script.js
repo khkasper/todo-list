@@ -1,10 +1,12 @@
 // Facilitando encontrar as minhas const declaradas.
+
 const taskText = document.querySelector('#texto-tarefa');
 const createTask = document.querySelector('#criar-tarefa');
 const taskList = document.querySelector('#lista-tarefas');
 const liItem = document.getElementsByTagName('li');
 const clearAllButton = document.querySelector('#apaga-tudo');
 const rmvDoneButton = document.querySelector('#remover-finalizados');
+const saveTasks = document.querySelector('#salvar-tarefas');
 
 // Criar botão que ao ser clicado, cria um item de lista para receber o texto do "input" e adiciona esta "li" na "lista ordenada", limpando o conteúdo do "input" após a execução.
 
@@ -61,3 +63,12 @@ function rmvDone () {
 }
 rmvDone();
 
+// Função ao clicar no botão Salvar tarefas, salva os itens no localStorage, pois devem permanecer na lista ao recarregar a página.
+
+function saveTaskButton () {
+  saveTasks.addEventListener('click', () => {
+  localStorage.setItem('item', taskList.innerHTML);
+  });
+  taskList.innerHTML = localStorage.getItem('item');
+}
+saveTaskButton();
