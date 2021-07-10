@@ -9,11 +9,9 @@ const rmvDoneButton = document.querySelector('#remover-finalizados');
 const saveTasks = document.querySelector('#salvar-tarefas');
 const moveUpButton = document.querySelector('#mover-cima');
 const moveDownButton = document.querySelector('#mover-baixo');
-const selecionado = document.querySelector('.selected');
-const completed = document.querySelector('.completed');
 const rmvSelected = document.querySelector('#remover-selecionado');
 
-// Criar botão que ao ser clicado, cria um item de lista para receber o texto do "input" e adiciona esta "li" na "lista ordenada", limpando o conteúdo do "input" após a execução.
+// Função para ao clicar, cria uma "li" para receber o texto do "input" e a adiciona na "lista ordenada", limpando o conteúdo do "input" após a execução.
 
 function addTaskItem() {
   createTask.addEventListener('click', () => {
@@ -25,7 +23,7 @@ function addTaskItem() {
 }
 addTaskItem();
 
-// Criar função para ao clicar, percorrer por todos os itens da lista, resetando para a cor de fundo padrão (branca) e altera a selecionada para cinza.
+// Função para ao clicar, percorrer por todos os itens da lista, resetando para a cor de fundo padrão (branca) e altera a selecionada para cinza.
 // https://developer.mozilla.org/pt-BR/docs/Web/API/Element/classList
 
 function changeBg() {
@@ -81,16 +79,14 @@ function saveTaskButton() {
 }
 saveTaskButton();
 
-// https://stackoverflow.com/questions/1363650/javascript-moving-element-in-the-dom
+// https://developer.mozilla.org/pt-BR/docs/Web/API/Node/insertBefore
 // Função ao clicar no botão Mover para cima, executa o respectivo comando.
 
 function moveUp() {
   moveUpButton.addEventListener('click', () => {
-    for (let i = 0; i < liItem.length; i += 1) {
-      if (liItem[i].className === 'selecionado' && i !== 0) {
-        liItem[i].parentNode.insertBefore(liItem[i], liItem[i].previousElementSibling);
-        liItem[i].parentNode.insertBefore(liItem[i], liItem[i].nextElementSibling);
-      }
+    const taskSelected = document.querySelector('.selected');
+    if (taskSelected !== null && taskSelected.previousElementSibling !== null) {
+      taskList.insertBefore(taskSelected, taskSelected.previousElementSibling);
     }
   });
 }
@@ -100,11 +96,9 @@ moveUp();
 
 function moveDown() {
   moveDownButton.addEventListener('click', () => {
-    for (let i = 0; i < liItem.length; i += 1) {
-      if (liItem[i].className === 'selecionado' && i !== liItem.length - 1) {
-        liItem[i].parentNode.insertBefore(liItem[i].nextElementSibling, liItem[i]);
-        liItem[i].parentNode.insertBefore(liItem[i].previousElementSibling, liItem[i]);
-      }
+    const taskSelected = document.querySelector('.selected');
+    if (taskSelected !== null && taskSelected.nextElementSibling !== null) {
+      taskList.insertBefore(taskSelected.nextElementSibling, taskSelected);
     }
   });
 }
