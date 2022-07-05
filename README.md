@@ -3,7 +3,9 @@
 - Manipular CSS
 - Manipular Javascript
 
-## Requisitos do projeto
+# Requisitos do projeto
+
+## Obrigatórios
 
 - [x] 1 - Adicione à sua lista o título "Minha Lista de Tarefas" em uma tag <header>
 
@@ -27,7 +29,7 @@
 
 - [x]  11 - Adicione um botão com id="remover-finalizados" que quando clicado remove **somente** os elementos finalizados da sua lista
 
-** Bônus **
+## Bônus
 
 - [x]  12 - Adicione um botão com id="salvar-tarefas" que salve o conteúdo da lista. Se você fechar e reabrir a página, a lista deve continuar no estado em que estava
 
